@@ -1,0 +1,9 @@
+# Fotos pessoais e referências (não publicar)
+assets/referencias/
+assets/referencias-estilo/
+
+# Versões antigas / alternativas que o site não usa
+assets/cenario*.jpg
+assets/gerado-*.png
+assets/heroi-*
+assets/*-alt.*
