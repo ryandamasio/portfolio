@@ -197,6 +197,11 @@ section { position: relative; }
 .d-meta span { font: 500 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--line); padding: 8px 12px; border-radius: 999px; color: var(--text); }
 .d-poster { position: relative; height: min(78vh, 760px); aspect-ratio: 474/680; justify-self: center; border-radius: 6px; overflow: hidden; }
 .d-poster .cover { --cw: min(54vh, 530px); }
+.d-poster.is-site { height: auto; width: 100%; max-width: 760px; aspect-ratio: auto; background: #16161b; border: 1px solid var(--line); border-radius: 10px; }
+.d-poster.is-site .bar { display: flex; align-items: center; gap: 6px; padding: 10px 14px; border-bottom: 1px solid var(--line); font: 500 11px var(--mono); letter-spacing: .04em; color: var(--muted); }
+.d-poster.is-site .bar i { width: 9px; height: 9px; border-radius: 50%; background: #3a3a44; }
+.d-poster.is-site .bar span { margin-left: 8px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.d-poster.is-site img { display: block; width: 100%; height: auto; }
 .d-poster .cover h4 { font-size: calc(var(--cw) * .13); }
 
 /* ---------- CONTACT FINALE ---------- */
@@ -335,7 +340,7 @@ section { position: relative; }
       <h2 class="display silver"><span class="mline"><span>Projetos</span></span></h2>
       <nav class="tabs" id="tabs" aria-label="Categorias">
         <span class="ind" id="ind"></span>
-        <button data-cat="all">Tudo</button><button data-cat="motion">Motion</button><button data-cat="video">Vídeos</button>
+        <button data-cat="all">Tudo</button><button data-cat="site">Sites</button><button data-cat="motion">Motion</button><button data-cat="video">Vídeos</button>
       </nav>
     </div>
   </div>
@@ -362,7 +367,7 @@ section { position: relative; }
     <h3 class="mline d-title"><span id="dTitle"></span></h3>
     <span class="mline"><span class="d-meta" id="dMeta"></span></span>
     <span class="mline"><span><p id="dDesc"></p></span></span>
-    <span class="mline"><span><a class="pill-grad" id="dLink" href="#" target="_blank" rel="noopener">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a></span></span>
+    <span class="mline"><span><a class="pill-grad" id="dLink" href="#" target="_blank" rel="noopener"><span id="dLinkTxt">Ver projeto</span> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a></span></span>
   </div>
   <div class="d-poster" id="dPoster" aria-hidden="true"></div>
 </div>
@@ -532,7 +537,9 @@ const shelfApi = (() => {
     { t: 'Brand Shoes',    cat: 'video',  y: 2026, desc: 'Anúncio vertical de 40s para a Brand Shoes, marca de tênis de Iguape e Ilha Comprida.',    video: 'videos/brandshoes.mp4', poster: 'posters/brandshoes.jpg', url: '#', c: '#e8ff47', c2: '#ff9f1c' },
     { t: 'Antemanhã',      cat: 'video',  y: 2026, desc: 'Vídeo de lançamento do Antemanhã, 35s em formato vertical para Reels e Stories.',          video: 'videos/antemanha.mp4',  poster: 'posters/antemanha.jpg',  url: '#', c: '#ff9f1c', c2: '#7b2ff7' },
     { t: 'Sobre a água',   cat: 'video',  y: 2026, desc: 'Reel narrado sobre Pedro andando sobre a água (Mateus 14), com texto animado e clima cinematográfico.', video: 'videos/pedro.mp4', poster: 'posters/pedro.jpg', url: '#', c: '#c3c9d4', c2: '#2b4dff' },
-    { t: 'Tô bem',         cat: 'video',  y: 2026, desc: 'Reel com gancho forte em tela dividida: “quantas vezes hoje você já disse tô bem?”.',      video: 'videos/tobem.mp4',      poster: 'posters/tobem.jpg',      url: '#', c: '#7b2ff7', c2: '#f107a3' }
+    { t: 'Tô bem',         cat: 'video',  y: 2026, desc: 'Reel com gancho forte em tela dividida: “quantas vezes hoje você já disse tô bem?”.',      video: 'videos/tobem.mp4',      poster: 'posters/tobem.jpg',      url: '#', c: '#7b2ff7', c2: '#f107a3' },
+    { t: 'Mobile Games',   cat: 'site',   y: 2026, desc: 'Site conceito para a Mobile Games, loja gamer do ABC Paulista, com cena 3D interativa, mascote animado e atendimento direto no WhatsApp.', poster: 'posters/mobilegames.jpg', shot: 'posters/mobilegames-site.jpg', url: 'https://ryandamasio.github.io/mobile-games-site/', c: '#ffc21a', c2: '#e5202e' },
+    { t: 'Senhor Delivery', cat: 'site',  y: 2026, desc: 'Amostra de cardápio digital para o Senhor Delivery, de Iguape: o cliente monta o próprio açaí e o pedido chega organizado no WhatsApp.', poster: 'posters/senhordelivery.jpg', shot: 'posters/senhordelivery-site.jpg', url: 'https://ryandamasio.github.io/senhor-delivery-demo/', c: '#ffc21a', c2: '#7b2ff7' }
   ];
   const LABEL = { video: 'Vídeo', motion: 'Motion', site: 'Site', design: 'Design' };
   const coverHTML = (p, i) => `<div class="cover${p.poster ? ' has-img' : ''}" style="--c:${p.c};--c2:${p.c2}">${p.poster ? `<img class="cimg" src="${p.poster}" alt="" loading="lazy" draggable="false">` : ''}<div class="top"><span>${LABEL[p.cat]}</span><span>${p.y}</span></div><span class="num">${String(i + 1).padStart(2, '0')}</span><div><h4>${p.t}</h4><div class="cat">Ryan · ${LABEL[p.cat]}</div></div></div>`;
@@ -600,8 +607,12 @@ const shelfApi = (() => {
     document.getElementById('dMeta').innerHTML = `<span>${LABEL[p.cat]}</span><span>${p.y}</span><span>Ryan</span>`;
     document.getElementById('dDesc').textContent = p.desc;
     const link = document.getElementById('dLink'); link.href = p.url; link.style.display = p.url && p.url !== '#' ? '' : 'none';
+    document.getElementById('dLinkTxt').textContent = p.cat === 'site' ? 'Ver site no ar' : 'Ver projeto';
+    poster.classList.toggle('is-site', !!p.shot);
     poster.style.aspectRatio = p.video ? '9 / 16' : '';
-    poster.innerHTML = p.video ? `<video src="${p.video}" poster="${p.poster || ''}" controls playsinline preload="metadata"></video>` : coverHTML(p, active);
+    poster.innerHTML = p.video ? `<video src="${p.video}" poster="${p.poster || ''}" controls playsinline preload="metadata"></video>`
+      : p.shot ? `<div class="bar"><i></i><i></i><i></i><span>${p.url.replace(/^https?:\/\//, '').replace(/\/$/, '')}</span></div><img src="${p.shot}" alt="Página inicial do site ${p.t}">`
+      : coverHTML(p, active);
     if (p.video) setTimeout(() => { const v = poster.querySelector('video'); if (v) v.play().catch(() => {}); }, reduce ? 50 : 1200);
     const tp = tapes.find((t, v) => Math.abs(rel(v)) < .5), r = tp.cv.getBoundingClientRect(), W = innerWidth, H = innerHeight;
     detail.classList.add('open'); detail.scrollTop = 0; document.body.style.overflow = 'hidden';
