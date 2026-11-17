@@ -216,7 +216,7 @@ section { position: relative; }
 .magnet { position: relative; width: clamp(150px, 15vw, 210px); aspect-ratio: 1; border-radius: 50%; background: var(--grad); display: grid; place-items: center; text-align: center; font: 600 13px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: #fff; box-shadow: 0 20px 60px -10px rgba(241,7,163,.45); transition: transform .5s var(--ease); will-change: transform; }
 .magnet span { display: block; transition: transform .5s var(--ease); }
 .magnet svg { width: 20px; height: 20px; margin: 8px auto 0; display: block; }
-.links { margin-top: clamp(70px, 8vw, 120px); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(4, 1fr); }
+.links { margin-top: clamp(70px, 8vw, 120px); border-top: 1px solid var(--line); display: grid; grid-template-columns: repeat(3, 1fr); }
 .lk { position: relative; padding: 30px 24px 34px 0; border-bottom: 1px solid var(--line); display: block; }
 .lk + .lk { padding-left: 24px; border-left: 1px solid var(--line); }
 .lk .label { display: flex; justify-content: space-between; }
@@ -239,8 +239,8 @@ section { position: relative; }
   .svc-row { grid-template-columns: 40px 1fr 46px; }
   .svc-row .tags { display: none; }
   .contact-mid { grid-template-columns: 1fr; justify-items: start; }
-  .links { grid-template-columns: 1fr 1fr; }
-  .lk:nth-child(3) { padding-left: 0; border-left: 0; }
+  .links { grid-template-columns: 1fr; }
+  .lk + .lk { padding-left: 0; border-left: 0; }
   .works { --H: min(64vw, 44svh); }
   .detail { grid-template-columns: 1fr; padding: 90px 22px 40px; gap: 28px; align-items: start; }
   .d-poster { height: 50svh; order: -1; }
@@ -376,13 +376,12 @@ section { position: relative; }
   <div class="wrap">
     <div class="contact-mid">
       <p class="mline-wrap">Tem um vídeo, um site ou uma ideia maluca? <em>Me chama</em> e a gente transforma isso em algo que as pessoas lembram.</p>
-      <a class="magnet" id="magnet" href="mailto:seuemail@exemplo.com"><span>Enviar<br>e-mail<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
+      <a class="magnet" id="magnet" href="mailto:ryandamasio258@gmail.com"><span>Enviar<br>e-mail<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span></a>
     </div>
     <div class="links">
-      <a class="lk" href="https://instagram.com/" target="_blank" rel="noopener"><span class="label">Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="v"><span>@seuusuario</span><span>@seuusuario</span></span></a>
-      <a class="lk" href="mailto:seuemail@exemplo.com"><span class="label">E-mail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="v"><span>seuemail@exemplo.com</span><span>seuemail@exemplo.com</span></span></a>
-      <a class="lk" href="https://linkedin.com/" target="_blank" rel="noopener"><span class="label">LinkedIn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="v"><span>/in/seuperfil</span><span>/in/seuperfil</span></span></a>
-      <a class="lk" href="https://wa.me/" target="_blank" rel="noopener"><span class="label">WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="v"><span>(00) 00000-0000</span><span>(00) 00000-0000</span></span></a>
+      <a class="lk" href="https://instagram.com/ryandamasio_" target="_blank" rel="noopener"><span class="label">Instagram <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="v"><span>@ryandamasio_</span><span>@ryandamasio_</span></span></a>
+      <a class="lk" href="mailto:ryandamasio258@gmail.com"><span class="label">E-mail <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="v"><span>ryandamasio258@gmail.com</span><span>ryandamasio258@gmail.com</span></span></a>
+      <a class="lk" href="https://wa.me/5513996019461" target="_blank" rel="noopener"><span class="label">WhatsApp <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 17L17 7M8 7h9v9"/></svg></span><span class="v"><span>(13) 99601-9461</span><span>(13) 99601-9461</span></span></a>
     </div>
     <div class="wordmark" id="wordmark"><span class="display silver" id="wordText">Ryan</span></div>
     <div class="foot label">
